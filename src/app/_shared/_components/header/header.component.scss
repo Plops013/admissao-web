@@ -1,0 +1,105 @@
+@import "../../../../assets/styles/variables.scss";
+
+.header {
+    background-color: #fff;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 16px 32px;
+
+    .page-info {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        gap: 0px;
+
+        &__title {
+            letter-spacing: -2px;
+            font-size: 32px;
+            line-height: 1.1;
+        }
+
+        &__breadcrumb {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+
+            gap: 8px;
+
+            p a {
+                text-decoration: none;
+                color: $color-neutral-6;
+                font-size: 14px;
+                display: flex;
+                gap: 8px;
+
+                &:hover {
+                    color: $color-primary;
+                }
+            }
+        }
+    }
+
+    .user {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+        width: fit-content;
+
+        gap: 16px;
+
+        &__name {
+            font-size: 14px;
+            font-weight: 600;
+            color: $color-primary;
+
+            border: 1px solid $color-primary;
+            border-radius: 16px;
+            padding: 4px 12px;
+            width: fit-content;
+        }
+
+        &__image {
+           width: 42px;
+           height: 42px; 
+           object-fit: cover;
+           border-radius: 20px;
+        }
+
+        &__notification {
+            position: relative;
+            width: 32px;
+
+            &-number {
+                position: absolute;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                color: $color-white;
+                background-color: $color-error;
+                border-radius: 8px;
+
+                top: 0px;
+                right: 0px;
+
+                width: 16px;
+                height: 16px;
+
+                font-size: 10px;
+                font-weight: 600;
+            }
+        }
+
+        &__icon {
+            width: 32px;
+
+        }
+    }
+}

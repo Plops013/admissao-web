@@ -1,15 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AdmissaoComponent } from './admissao/admissao.component';
 
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./coperado/coperado.module').then(m => m.CoperadoModule)
+    component: AdmissaoComponent,
   }
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class CoperadoRoutingModule { }

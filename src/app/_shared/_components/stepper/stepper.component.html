@@ -1,0 +1,6 @@
+<div class="stepper">
+    <div *ngFor="let step of steps" class="stepper__step" [ngClass]="{ 'filled': step.filled, 'active': step.active }">
+        <div class="step__circle" [ngClass]="{ 'filled': step.filled, 'active': step.active }"></div>
+        <div class="step__title" [ngClass]="{ 'filled': step.filled, 'active': step.active }">{{ step.label }}</div>
+    </div>
+</div>

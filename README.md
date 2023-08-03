@@ -1,27 +1,45 @@
-# AdmissaoWeb
+# AdmissãoWeb
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.6.
+## Observações
 
-## Development server
+Foram desenvolvidos o máximo de componente e estrutura possível dentro do tempo disponível.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Explicação técnica
 
-## Code scaffolding
+A estrutura de pastas do projeto foi organizada da seguinte forma:
+- _domain -> contém as classes de domínio da aplicação
+- _shared -> contém os componentes e serviços compartilhados
+- modulos -> contém os módulos da aplicação (consolidation, flow, home)
+    - modulos podém ter suas próprias pastas estruturais tais quais: components, services, models, etc.
+- pastas estruturais são definidas com o prefixo "_", para que fiquem sempre no topo da lista de pastas
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Primeiros passos
 
-## Build
+- Instale [Node.js](https://nodejs.org/en/) versão 10.9.0 ou superior
+- Instale [Angular CLI](https://cli.angular.io/) versão 6.2.3 ou superior
+- Instale [Git](https://git-scm.com/)
+- Instale [Visual Studio Code](https://code.visualstudio.com/) ou outro editor de texto de sua preferência
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Clone o repositório
 
-## Running unit tests
+```
+git clone [url do repositório]
+```
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Instale as dependências
 
-## Running end-to-end tests
+```
+npm i
+```
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### Inicie o servidor local
 
-## Further help
+```
+ng s -o
+```
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### Acesse a aplicação
+
+```
+http://localhost:4200/
+```

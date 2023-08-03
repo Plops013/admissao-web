@@ -1,0 +1,108 @@
+@import '../../../../assets/styles/variables.scss';
+
+.stepper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    &__step {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+        gap: 8px;
+        position: relative;
+        padding: 0px 12px;
+        min-width: 120px;
+
+        ::after {
+            content: '';
+            position: absolute;
+            left: 0px;
+            top: 8px;
+            width: 100%;
+            height: 2px;
+
+            background-color: $color-neutral-4;
+            z-index: -1;
+        }
+
+        &.filled {
+            ::after {
+                background-color: $color-primary;
+            }
+
+        
+        }
+
+        &:first-child {
+            ::after { 
+                width: calc(50% - 9px);
+                right: 0px;
+                left: initial;
+            }
+        }
+
+        &:last-child {
+            ::after { 
+                width: calc(50% - 9px);
+                left: 0px;
+            }
+        }
+
+        &:not(:first-child).active {
+            ::before { 
+                content: '';               
+                width: calc(50% - 9px);
+                background-color: $color-primary;
+                position: absolute;
+                left: 0px;
+                top: 8px;
+                height: 2px;
+    
+                z-index: -1;
+
+                z-index: 9;
+            } 
+        }
+    }
+
+    .step {
+        &__circle {
+            width: 18px;
+            height: 18px;
+            border: 2px solid $color-neutral-4;
+            background-color: $color-neutral-4;
+            color: $color-neutral-4;
+            border-radius: 9px;
+            
+            &.active {
+                background-color: $color-primary-light;
+                border-color: $color-primary;
+            }
+            
+            &.filled {
+                border-color: $color-primary;
+                background-color: $color-primary;
+            }
+
+        }
+
+        &__title {
+            font-size: 14px;
+            font-weight: 600;
+            color: $color-neutral-4;
+
+            &.active {
+                color: $color-primary;
+            }
+
+            &.filled {
+                color: $color-primary;
+            }
+
+        }
+    }
+}

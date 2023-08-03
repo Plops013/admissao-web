@@ -1,0 +1,115 @@
+<aw-header [title]="title" [breadcrumbs]="breadcrumbs"></aw-header>
+<div class="content">
+  <aw-stepper [steps]="steps"></aw-stepper>
+  <div>
+    <h2 class="page-title">Informe o CPF do futuro cooperado (a)</h2>
+    <p class="small mt-1">
+      Se necessário, você poderá duplicar uma conta existente ou pausar e
+      retomar este cadastro futuramente.
+    </p>
+    <p class="small">Digite apenas os números (sem pontos ou traços).</p>
+  </div>
+
+  <form [formGroup]="admissaoForm" class="form mt-2">
+    <div
+      class="form-field"
+      [ngClass]="{
+        error:
+          !admissaoForm.get('cpf')?.valid && admissaoForm.get('cpf')?.touched
+      }"
+    >
+      <label>CPF</label>
+      <input
+        placeholder="111.222.444-4"
+        formControlName="cpf"
+        class="custom-size"
+        type="text"
+      />
+      <p
+        *ngIf="admissaoForm.get('cpf')?.hasError('required')"
+        class="error-message"
+      >
+        Por favor digite um CPF.
+      </p>
+      <p
+        *ngIf="admissaoForm.get('cpf')?.hasError('minlength')"
+        class="error-message"
+      >
+        Por favor digite um CPF válido.
+      </p>
+      <p
+        *ngIf="admissaoForm.get('cpf')?.hasError('cpfInvalid')"
+        class="error-message"
+      >
+        Por favor digite um CPF válido.
+      </p>
+    </div>
+    <aw-button [disabled]="!admissaoForm.valid || loading" [loading]="loading" (click)="getCoperadoByCpf()"
+      >Consultar por CPF</aw-button
+    >
+  </form>
+  <div *ngIf="coperado" class="dados">
+    <div class="dados__item">
+      <div class="dados__header">
+        <h3>Situação cadastral do CPF</h3>
+        <p class="label">Consulta na receita federal</p>
+      </div>
+      <div class="dados__content">
+        <div class="content__icon">
+          <img
+            class="gray"
+            src="https://img.icons8.com/?size=512&id=99268&format=png"
+            alt="Icone pessoa"
+          />
+        </div>
+        <div class="content__info">
+          <p class="label">Nome</p>
+          <p class="info">{{ coperado.nome }}</p>
+        </div>
+      </div>
+      <div class="dados__content">
+        <div class="content__icon">
+          <img
+            src="https://img.icons8.com/?size=512&id=63262&format=png"
+            alt="Icone check"
+          />
+        </div>
+        <div class="content__info">
+          <p class="label">Situação do CPF</p>
+          <p class="info">{{ coperado.regular ? "Regular" : "Irregular" }}</p>
+        </div>
+      </div>
+    </div>
+    <div *ngFor="let conta of coperado.contas" class="dados__item">
+      <div class="dados__header">
+        <h3>Conta aplicação</h3>
+        <p class="label">Cooperativa Viacredi</p>
+      </div>
+      <div class="dados__content">
+        <div class="content__icon">
+          <img
+            class="gray"
+            src="https://img.icons8.com/?size=512&id=22128&format=png"
+            alt="Icone conta"
+          />
+        </div>
+        <div class="content__info">
+          <p class="label">Numero da conta</p>
+          <p class="info">{{ conta?.numero }}-{{ conta.digito }}</p>
+        </div>
+      </div>
+      <a class="dados__button">Duplicar conta</a>
+    </div>
+  </div>
+</div>
+<div class="bottom-navigation">
+  <div class="button-row">
+    <aw-button size="lg" type="secondary" *ngIf="!coperado"
+      >Dicas para admissão</aw-button
+    >
+  </div>
+  <div class="button-row" *ngIf="coperado">
+    <aw-button size="lg">Iniciar nova admissão</aw-button>
+    <aw-button size="lg" type="secondary">Dicas para admissão</aw-button>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+<div class="header">
+  <div class="page-info">
+    <h1 class="page-info__title">{{ title }}</h1>
+    <div class="page-info__breadcrumb">
+      <p *ngFor="let breadcrumb of breadcrumbs; let last = last">
+        <a [routerLink]="breadcrumb.route"
+          >
+          <span>{{ breadcrumb.label }}</span>
+          <span *ngIf="!last">/</span>
+        </a>
+      </p>
+    </div>
+  </div>
+  <div class="user">
+    <!-- Essa parte poderia ser distribuida entre outros componentes, devido o caratér de teste, foi feito apenas um mock -->
+    <div class="user__notification">
+      <img
+        class="user__icon"
+        src="assets/images/icons-bell.png"
+        alt="Icone de notificações"
+      />
+      <span class="user__notification-number">7</span>
+    </div>
+    <p class="user__name">VIACREDI</p>
+    <img
+      class="user__image"
+      src="/assets/images/user.jpg"
+      alt="Foto do usuário"
+    />
+  </div>
+</div>
